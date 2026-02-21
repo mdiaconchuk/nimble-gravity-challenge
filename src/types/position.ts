@@ -6,5 +6,6 @@ export interface Position {
 export interface PositionItemProps extends Omit<Position, "id"> {
     uuid: string,
     jobId: number,
-    candidateId: string;
+    candidateId: string,
+    applicationId: string,
 }

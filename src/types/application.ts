@@ -3,4 +3,5 @@ export interface Application {
     jobId: number,
     candidateId: string,
     repoUrl: string,
+    applicationId: string,
 }

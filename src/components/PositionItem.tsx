@@ -2,7 +2,7 @@ import type { PositionItemProps } from "../types/position";
 import { postApplication } from "../services/applicateService";
 import { useState,} from "react";
 
-function PositionItem({ title, uuid, jobId, candidateId }: PositionItemProps) {
+function PositionItem({ title, uuid, jobId, candidateId, applicationId }: PositionItemProps) {
   const [repoUrl, setRepoUrl] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -15,13 +15,13 @@ function PositionItem({ title, uuid, jobId, candidateId }: PositionItemProps) {
     setIsLoading(true);
     
     try {
-      const apiResponse = await postApplication(uuid, jobId, candidateId, repoUrl);
+      const apiResponse = await postApplication(uuid, jobId, candidateId, repoUrl, applicationId);
       if (apiResponse.ok) {
         alert("Application sent!");
         setRepoUrl("");
       }
     } catch (error) {
-      alert(`Something failed! + ${error}`);
+      alert(`Something failed! ${error}`);
     } finally {
       setIsLoading(false);
     }
@@ -41,7 +41,7 @@ function PositionItem({ title, uuid, jobId, candidateId }: PositionItemProps) {
         required
         className="border border-blue-700 w-full md:w-9/12 p-2  shadow-md rounded-lg text-sm"
         placeholder="https://github.com/..."
-        value={repoUrl}
+        value={repoUrl ?? ""}
         onChange={(e) => setRepoUrl(e.target.value)}
       />
 

@@ -7,6 +7,7 @@ export const postApplication = async (
   jobId: number,
   candidateId: string,
   repoUrl: string,
+  applicationId: string,
 ): Promise<{ ok: boolean }> => {
     
   const apiResponse = await fetch(`${BASE_URL}/api/candidate/apply-to-job`, {
@@ -17,6 +18,7 @@ export const postApplication = async (
       jobId: jobId,
       candidateId: candidateId,
       repoUrl: repoUrl,
+      applicationId: applicationId
     }),
   });
 

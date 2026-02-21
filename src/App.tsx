@@ -85,6 +85,7 @@ function App() {
                   jobId={pos.id}
                   uuid={candidateInfo.uuid}
                   candidateId={candidateInfo.candidateId}
+                  applicationId={candidateInfo.applicationId}
                 />
               ))}
             </div>
